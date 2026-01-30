@@ -86,18 +86,12 @@ export default function TeamAccordion({ categories }: TeamAccordionProps) {
                   {/* Vendor Photo */}
                   <div className="flex-shrink-0">
                     <div className="relative w-28 h-28 md:w-36 md:h-36 bg-ep-slate overflow-hidden border border-ep-graphite">
-                      {/* Placeholder - will show actual image when available */}
-                      <div className="absolute inset-0 flex items-center justify-center text-ep-gray text-xs uppercase tracking-wide">
-                        Photo
-                      </div>
-                      {/* Uncomment when you have real images:
                       <Image
                         src={`/images/headshots/${vendor.photo}`}
                         alt={vendor.name}
                         fill
                         className="object-cover"
                       />
-                      */}
                       {/* Corner accent */}
                       <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-ep-accent" />
                     </div>
