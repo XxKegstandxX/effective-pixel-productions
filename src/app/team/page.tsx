@@ -30,7 +30,7 @@ export default function Team() {
       {/* Separator */}
       <div className="sep-line-accent" />
 
-      {/* Studio Lead */}
+      {/* Studio Manager */}
       <section className="section-padding">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
           {/* Photo */}
@@ -50,7 +50,7 @@ export default function Team() {
 
           {/* Info */}
           <div className="lg:col-span-8 flex flex-col justify-center">
-            <span className="text-xs uppercase tracking-widest text-ep-accent mb-4">Studio Lead</span>
+            <span className="text-xs uppercase tracking-widest text-ep-accent mb-4">Studio Manager</span>
             <h2 className="font-display text-display-md lg:text-display-lg text-ep-white mb-3">
               {vendorData.studioLead.name}
             </h2>
