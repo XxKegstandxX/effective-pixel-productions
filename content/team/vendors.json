@@ -14,26 +14,26 @@
       "categoryImage": "photographers-bg.jpg",
       "vendors": [
         {
-          "id": "photographer-1",
-          "name": "Photographer Name",
+          "id": "corey-martineau",
+          "name": "Corey Martineau",
           "bio": "Brief bio about their experience, specialties, and notable work...",
           "photo": "photographer-1.jpg"
         },
         {
-          "id": "photographer-2",
-          "name": "Photographer Name",
+          "id": "michelle-carpenter",
+          "name": "Michelle Carpenter",
           "bio": "Brief bio about their experience, specialties, and notable work...",
           "photo": "photographer-2.jpg"
         },
         {
-          "id": "photographer-3",
-          "name": "Photographer Name",
+          "id": "diego-correal",
+          "name": "Diego Correal",
           "bio": "Brief bio about their experience, specialties, and notable work...",
           "photo": "photographer-3.jpg"
         },
         {
-          "id": "photographer-4",
-          "name": "Photographer Name",
+          "id": "john-tavares",
+          "name": "John Tavares",
           "bio": "Brief bio about their experience, specialties, and notable work...",
           "photo": "photographer-4.jpg"
         }
@@ -46,14 +46,14 @@
       "categoryImage": "producers-bg.jpg",
       "vendors": [
         {
-          "id": "producer-1",
-          "name": "Producer Name",
+          "id": "biannette-pichardo",
+          "name": "Biannette Pichardo",
           "bio": "Brief bio about their experience, specialties, and notable work...",
           "photo": "producer-1.jpg"
         },
         {
-          "id": "producer-2",
-          "name": "Producer Name",
+          "id": "tony-cervantes",
+          "name": "Tony Cervantes",
           "bio": "Brief bio about their experience, specialties, and notable work...",
           "photo": "producer-2.jpg"
         }
@@ -66,8 +66,8 @@
       "categoryImage": "set-designers-bg.jpg",
       "vendors": [
         {
-          "id": "set-designer-1",
-          "name": "Set Designer Name",
+          "id": "jamie-howarth",
+          "name": "Jamie Howarth",
           "bio": "Brief bio about their experience, specialties, and notable work...",
           "photo": "set-designer-1.jpg"
         },
@@ -106,9 +106,9 @@
       "categoryImage": "hair-makeup-bg.jpg",
       "vendors": [
         {
-          "id": "hair-makeup-1",
-          "name": "Hair & Makeup Artist Name",
-          "bio": "Brief bio about their experience, specialties, and notable work...",
+          "id": "noel-mckinnon",
+          "name": "Noel McKinnon",
+          "bio": "Noel McKinnon is the founder and award winning makeup/hair artist leading Makeup 2 die 4. Known as “the wedding whisperer” per her Best of Boston award. Noel is not just known for styling flawless brides but also has been acknowledged for her impeccable work for some of the most well recognizable people, publications and productions in the world. Alex Baldwin, Hilary Clinton, Tim Gun, People Magazine, ELLE, Modern Luxury Wedding, HBO, Showtime, and Walburger’s to name a few. She was also nominated top five finalist twice in the North American Hairstyling Awards for makeup.",
           "photo": "hair-makeup-1.jpg"
         },
         {
@@ -126,8 +126,8 @@
       "categoryImage": "sculptor-bg.jpg",
       "vendors": [
         {
-          "id": "sculptor-1",
-          "name": "Sculptor Name",
+          "id": "jason-loik",
+          "name": "Jason Loik",
           "bio": "Specializing in food styling, Play-Doh creations, and sculptural elements for commercial photography...",
           "photo": "sculptor-1.jpg"
         }
