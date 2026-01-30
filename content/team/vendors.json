@@ -17,7 +17,7 @@
           "id": "corey-martineau",
           "name": "Corey Martineau",
           "bio": "Brief bio about their experience, specialties, and notable work...",
-          "photo": "photographer-1.jpg"
+          "photo": "corey-martineau.jpg"
         },
         {
           "id": "michelle-carpenter",
@@ -29,13 +29,13 @@
           "id": "diego-correal",
           "name": "Diego Correal",
           "bio": "Brief bio about their experience, specialties, and notable work...",
-          "photo": "photographer-3.jpg"
+          "photo": "diego-correal.jpg"
         },
         {
           "id": "john-tavares",
           "name": "John Tavares",
           "bio": "Brief bio about their experience, specialties, and notable work...",
-          "photo": "photographer-4.jpg"
+          "photo": "john-tavares.jpg"
         }
       ]
     },
@@ -49,13 +49,13 @@
           "id": "biannette-pichardo",
           "name": "Biannette Pichardo",
           "bio": "Brief bio about their experience, specialties, and notable work...",
-          "photo": "producer-1.jpg"
+          "photo": "biannette-pichardo.jpg"
         },
         {
           "id": "tony-cervantes",
           "name": "Tony Cervantes",
           "bio": "Brief bio about their experience, specialties, and notable work...",
-          "photo": "producer-2.jpg"
+          "photo": "tony-cervantes.jpg"
         }
       ]
     },
@@ -69,7 +69,7 @@
           "id": "jamie-howarth",
           "name": "Jamie Howarth",
           "bio": "Brief bio about their experience, specialties, and notable work...",
-          "photo": "set-designer-1.jpg"
+          "photo": "jamie-howarth.jpg"
         },
         {
           "id": "set-designer-2",
@@ -92,10 +92,10 @@
           "photo": "serena-gaitskell.jpg"
         },
         {
-          "id": "wardrobe-2",
-          "name": "Wardrobe Stylist Name",
+          "id": "brianna-moon",
+          "name": "Brianna Moon",
           "bio": "Brief bio about their experience, specialties, and notable work...",
-          "photo": "wardrobe-2.jpg"
+          "photo": "brianna-moon.jpg"
         }
       ]
     },
@@ -112,10 +112,10 @@
           "photo": "noel-mckinnon.jpg"
         },
         {
-          "id": "hair-makeup-2",
-          "name": "Hair & Makeup Artist Name",
+          "id": "vanessa-cortes",
+          "name": "Vanessa Cortes",
           "bio": "Brief bio about their experience, specialties, and notable work...",
-          "photo": "hair-makeup-2.jpg"
+          "photo": "vanessa-cortes.jpg"
         }
       ]
     },
@@ -129,7 +129,7 @@
           "id": "jason-loik",
           "name": "Jason Loik",
           "bio": "Specializing in food styling, Play-Doh creations, and sculptural elements for commercial photography...",
-          "photo": "sculptor-1.jpg"
+          "photo": "jason-loik.jpg"
         }
       ]
     }
