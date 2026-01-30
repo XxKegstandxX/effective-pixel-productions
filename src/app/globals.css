@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-ep-black text-ep-white antialiased;
+  }
+  
+  ::selection {
+    @apply bg-ep-accent/40 text-ep-white;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-3 px-8 py-4 
+           bg-ep-accent text-ep-white font-body text-sm tracking-wide uppercase
+           transition-all duration-500 ease-out
+           hover:bg-ep-accent-light hover:gap-5;
+  }
+  
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-3 px-8 py-4 
+           border border-ep-silver/30 text-ep-white font-body text-sm tracking-wide uppercase
+           transition-all duration-500 ease-out
+           hover:border-ep-accent hover:text-ep-accent hover:gap-5;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 text-sm tracking-wide uppercase text-ep-silver
+           transition-all duration-300
+           hover:text-ep-accent hover:gap-4;
+  }
+  
+  .section-padding {
+    @apply px-6 md:px-12 lg:px-20 xl:px-32 py-24 md:py-32 lg:py-40;
+  }
+
+  .section-padding-sm {
+    @apply px-6 md:px-12 lg:px-20 xl:px-32 py-16 md:py-24;
+  }
+  
+  .nav-link {
+    @apply text-xs tracking-widest uppercase text-ep-silver 
+           transition-all duration-300 hover:text-ep-white
+           relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px 
+           after:bg-ep-accent after:transition-all after:duration-300
+           hover:after:w-full;
+  }
+
+  /* Vertical text for decorative elements */
+  .vertical-text {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+  }
+
+  /* Oversized display number styling */
+  .display-number {
+    @apply font-display text-[12rem] md:text-[16rem] leading-none text-ep-charcoal/50 
+           select-none pointer-events-none;
+  }
+
+  /* Elegant separator line */
+  .sep-line {
+    @apply h-px bg-gradient-to-r from-transparent via-ep-graphite to-transparent;
+  }
+
+  .sep-line-accent {
+    @apply h-px bg-gradient-to-r from-transparent via-ep-accent/50 to-transparent;
+  }
+
+  /* Card hover effect */
+  .card-hover {
+    @apply transition-all duration-500 ease-out
+           hover:translate-y-[-4px] hover:shadow-2xl hover:shadow-ep-accent/5;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  /* Stagger animation delays */
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.2s; }
+  .stagger-3 { animation-delay: 0.3s; }
+  .stagger-4 { animation-delay: 0.4s; }
+  .stagger-5 { animation-delay: 0.5s; }
+  .stagger-6 { animation-delay: 0.6s; }
+
+  /* Gradient text */
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-ep-white to-ep-silver;
+  }
+
+  /* Blur backdrop */
+  .blur-backdrop {
+    @apply backdrop-blur-md bg-ep-black/80;
+  }
+
+  /* Image mask gradient */
+  .mask-gradient-b {
+    mask-image: linear-gradient(to bottom, black 60%, transparent);
+  }
+
+  .mask-gradient-r {
+    mask-image: linear-gradient(to right, black 70%, transparent);
+  }
+}

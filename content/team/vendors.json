@@ -1,0 +1,146 @@
+{
+  "studioLead": {
+    "id": "your-name",
+    "name": "Your Name",
+    "title": "Studio Manager / Digital Technician / Prop Builder",
+    "bio": "With over [X] years of experience in commercial photography production, I've had the privilege of working with some of the world's most recognized brands. My role spans digital technical direction, prop building, and overall studio management—ensuring every shoot runs seamlessly from concept to final delivery. I'd love to introduce you to my incredible team.",
+    "photo": "your-name.jpg"
+  },
+  "categories": [
+    {
+      "id": "photographers",
+      "title": "Photographers",
+      "description": "Expert product and lifestyle photographers",
+      "categoryImage": "photographers-bg.jpg",
+      "vendors": [
+        {
+          "id": "photographer-1",
+          "name": "Photographer Name",
+          "bio": "Brief bio about their experience, specialties, and notable work...",
+          "photo": "photographer-1.jpg"
+        },
+        {
+          "id": "photographer-2",
+          "name": "Photographer Name",
+          "bio": "Brief bio about their experience, specialties, and notable work...",
+          "photo": "photographer-2.jpg"
+        },
+        {
+          "id": "photographer-3",
+          "name": "Photographer Name",
+          "bio": "Brief bio about their experience, specialties, and notable work...",
+          "photo": "photographer-3.jpg"
+        },
+        {
+          "id": "photographer-4",
+          "name": "Photographer Name",
+          "bio": "Brief bio about their experience, specialties, and notable work...",
+          "photo": "photographer-4.jpg"
+        }
+      ]
+    },
+    {
+      "id": "producers",
+      "title": "Producers",
+      "description": "Production management and coordination",
+      "categoryImage": "producers-bg.jpg",
+      "vendors": [
+        {
+          "id": "producer-1",
+          "name": "Producer Name",
+          "bio": "Brief bio about their experience, specialties, and notable work...",
+          "photo": "producer-1.jpg"
+        },
+        {
+          "id": "producer-2",
+          "name": "Producer Name",
+          "bio": "Brief bio about their experience, specialties, and notable work...",
+          "photo": "producer-2.jpg"
+        }
+      ]
+    },
+    {
+      "id": "set-designers",
+      "title": "Set Designers",
+      "description": "Creative set design and construction",
+      "categoryImage": "set-designers-bg.jpg",
+      "vendors": [
+        {
+          "id": "set-designer-1",
+          "name": "Set Designer Name",
+          "bio": "Brief bio about their experience, specialties, and notable work...",
+          "photo": "set-designer-1.jpg"
+        },
+        {
+          "id": "set-designer-2",
+          "name": "Set Designer Name",
+          "bio": "Brief bio about their experience, specialties, and notable work...",
+          "photo": "set-designer-2.jpg"
+        }
+      ]
+    },
+    {
+      "id": "wardrobe-stylists",
+      "title": "Wardrobe Stylists",
+      "description": "Fashion and wardrobe styling",
+      "categoryImage": "wardrobe-bg.jpg",
+      "vendors": [
+        {
+          "id": "wardrobe-1",
+          "name": "Wardrobe Stylist Name",
+          "bio": "Brief bio about their experience, specialties, and notable work...",
+          "photo": "wardrobe-1.jpg"
+        },
+        {
+          "id": "wardrobe-2",
+          "name": "Wardrobe Stylist Name",
+          "bio": "Brief bio about their experience, specialties, and notable work...",
+          "photo": "wardrobe-2.jpg"
+        }
+      ]
+    },
+    {
+      "id": "hair-makeup",
+      "title": "Hair & Makeup",
+      "description": "Professional hair styling and makeup artistry",
+      "categoryImage": "hair-makeup-bg.jpg",
+      "vendors": [
+        {
+          "id": "hair-makeup-1",
+          "name": "Hair & Makeup Artist Name",
+          "bio": "Brief bio about their experience, specialties, and notable work...",
+          "photo": "hair-makeup-1.jpg"
+        },
+        {
+          "id": "hair-makeup-2",
+          "name": "Hair & Makeup Artist Name",
+          "bio": "Brief bio about their experience, specialties, and notable work...",
+          "photo": "hair-makeup-2.jpg"
+        }
+      ]
+    },
+    {
+      "id": "sculptor",
+      "title": "Sculptor",
+      "description": "Specialty sculpting for product photography",
+      "categoryImage": "sculptor-bg.jpg",
+      "vendors": [
+        {
+          "id": "sculptor-1",
+          "name": "Sculptor Name",
+          "bio": "Specializing in food styling, Play-Doh creations, and sculptural elements for commercial photography...",
+          "photo": "sculptor-1.jpg"
+        }
+      ]
+    }
+  ],
+  "clients": [
+    { "name": "Hasbro", "logo": "hasbro.png" },
+    { "name": "Nerf", "logo": "nerf.png" },
+    { "name": "Baby Alive", "logo": "baby-alive.png" },
+    { "name": "Mr. Potato Head", "logo": "mr-potato-head.png" },
+    { "name": "CVS", "logo": "cvs.png" },
+    { "name": "This Old House", "logo": "this-old-house.png" },
+    { "name": "L.L.Bean", "logo": "llbean.png" }
+  ]
+}
