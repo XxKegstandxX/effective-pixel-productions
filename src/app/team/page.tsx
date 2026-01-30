@@ -36,17 +36,12 @@ export default function Team() {
           {/* Photo */}
           <div className="lg:col-span-4">
             <div className="relative aspect-[4/5] bg-ep-slate overflow-hidden border border-ep-graphite">
-              <div className="absolute inset-0 flex items-center justify-center text-ep-gray text-sm uppercase tracking-wide">
-                Your Photo
-              </div>
-              {/* Uncomment when you have real image:
               <Image
                 src={`/images/headshots/${vendorData.studioLead.photo}`}
                 alt={vendorData.studioLead.name}
                 fill
                 className="object-cover"
               />
-              */}
               {/* Corner accents */}
               <div className="absolute top-0 left-0 w-6 h-6 border-t border-l border-ep-accent" />
               <div className="absolute bottom-0 right-0 w-6 h-6 border-b border-r border-ep-accent" />
