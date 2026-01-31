@@ -15,16 +15,31 @@ export default function ContactForm() {
     e.preventDefault()
     setStatus('submitting')
     
-    // TODO: Connect to your email service (Formspree, Resend, etc.)
-    // For now, this simulates a submission
-    await new Promise(resolve => setTimeout(resolve, 1000))
+    console.log('Submitting to Formspree...', formData)
     
-    // Reset form
-    setFormData({ name: '', email: '', company: '', message: '' })
-    setStatus('success')
-    
-    // Reset status after 3 seconds
-    setTimeout(() => setStatus('idle'), 3000)
+    try {
+      const response = await fetch('https://formspree.io/f/xzdvpdbj', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      })
+      
+      console.log('Response status:', response.status)
+      console.log('Response ok:', response.ok)
+      
+      if (response.ok) {
+        setFormData({ name: '', email: '', company: '', message: '' })
+        setStatus('success')
+        setTimeout(() => setStatus('idle'), 3000)
+      } else {
+        setStatus('error')
+        setTimeout(() => setStatus('idle'), 3000)
+      }
+    } catch (error) {
+      console.log('Fetch error:', error)
+      setStatus('error')
+      setTimeout(() => setStatus('idle'), 3000)
+    }
   }
 
   return (
@@ -37,6 +52,7 @@ export default function ContactForm() {
           <input
             type="text"
             id="name"
+            name="name"
             required
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -51,6 +67,7 @@ export default function ContactForm() {
           <input
             type="email"
             id="email"
+            name="email"
             required
             value={formData.email}
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -67,6 +84,7 @@ export default function ContactForm() {
         <input
           type="text"
           id="company"
+          name="company"
           value={formData.company}
           onChange={(e) => setFormData({ ...formData, company: e.target.value })}
           className="w-full px-0 py-3 bg-transparent border-b border-ep-graphite text-ep-white placeholder-ep-gray focus:border-ep-accent outline-none transition-colors"
@@ -80,6 +98,7 @@ export default function ContactForm() {
         </label>
         <textarea
           id="message"
+          name="message"
           required
           rows={5}
           value={formData.message}
@@ -104,6 +123,8 @@ export default function ContactForm() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
             </>
+          ) : status === 'error' ? (
+            'Error — Try Again'
           ) : (
             <>
               Send Message
