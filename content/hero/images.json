@@ -1,0 +1,16 @@
+{
+  "images": [
+    {
+      "src": "main-one.jpg",
+      "alt": "Commercial product photography"
+    },
+    {
+      "src": "main-two.jpg",
+      "alt": "Lifestyle photography"
+    },
+    {
+      "src": "main-three.jpg",
+      "alt": "Studio production"
+    }
+  ]
+}

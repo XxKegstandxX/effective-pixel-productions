@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import ClientLogos from '@/components/ClientLogos'
+import HeroSlideshow from '@/components/HeroSlideshow'
 import vendorData from '../../content/team/vendors.json'
+import heroData from '../../content/hero/images.json'
 
 export default function Home() {
   return (
@@ -55,23 +57,21 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Right: Image placeholder + stats */}
+              {/* Right: Image slideshow + stats */}
               <div className="lg:col-span-5 xl:col-span-6">
                 <div className="relative">
-                  {/* Image frame */}
+                  {/* Image frame with slideshow */}
                   <div className="relative aspect-[4/5] bg-ep-slate overflow-hidden opacity-0 animate-slide-in-left stagger-2">
-                    <div className="absolute inset-0 flex items-center justify-center text-ep-gray text-sm uppercase tracking-wide">
-                      Featured Image
-                    </div>
+                    <HeroSlideshow images={heroData.images} interval={7000} />
                     {/* Decorative corner accent */}
-                    <div className="absolute top-0 right-0 w-24 h-24">
+                    <div className="absolute top-0 right-0 w-24 h-24 z-20 pointer-events-none">
                       <div className="absolute top-4 right-4 w-full h-px bg-ep-accent" />
                       <div className="absolute top-4 right-4 w-px h-full bg-ep-accent" />
                     </div>
                   </div>
 
                   {/* Floating stats card */}
-                  <div className="absolute -bottom-8 -left-8 lg:-left-16 bg-ep-charcoal border border-ep-graphite p-6 opacity-0 animate-fade-in-up stagger-4">
+                  <div className="absolute -bottom-8 -left-8 lg:-left-16 bg-ep-charcoal border border-ep-graphite p-6 opacity-0 animate-fade-in-up stagger-4 z-10">
                     <div className="grid grid-cols-2 gap-8">
                       <div>
                         <p className="font-display text-3xl text-ep-white mb-1">15+</p>
