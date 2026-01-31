@@ -43,10 +43,10 @@ export default function Contact() {
               <div>
                 <span className="text-xs uppercase tracking-widest text-ep-gray mb-4 block">Email</span>
                 <a 
-                  href="mailto:hello@effectivepixelproductions.com"
+                  href="mailto:effectivepixelproductions@gmail.com"
                   className="text-xl text-ep-white hover:text-ep-accent transition-colors font-display"
                 >
-                  hello@effectivepixelproductions.com
+                  effectivepixelproductions@gmail.com
                 </a>
               </div>
 

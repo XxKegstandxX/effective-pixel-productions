@@ -33,10 +33,10 @@ export default function Footer() {
           <div className="lg:col-span-4">
             <p className="text-xs uppercase tracking-widest text-ep-gray mb-6">Get in Touch</p>
             <a 
-              href="mailto:hello@effectivepixelproductions.com" 
+              href="mailto:effectivepixelproductions@gmail.com" 
               className="text-ep-white hover:text-ep-accent transition-colors text-lg font-display"
             >
-              hello@effectivepixelproductions.com
+              mailto:effectivepixelproductions@gmail.com
             </a>
           </div>
         </div>
