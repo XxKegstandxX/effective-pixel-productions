@@ -135,12 +135,20 @@
     }
   ],
   "clients": [
-    { "name": "Hasbro", "logo": "hasbro.png" },
-    { "name": "Nerf", "logo": "nerf.png" },
-    { "name": "Baby Alive", "logo": "baby-alive.png" },
-    { "name": "Mr. Potato Head", "logo": "mr-potato-head.png" },
-    { "name": "CVS", "logo": "cvs.png" },
-    { "name": "This Old House", "logo": "this-old-house.png" },
-    { "name": "L.L.Bean", "logo": "llbean.png" }
-  ]
+  { "name": "Nerf", "logo": "nerf.png" },
+  { "name": "Baby Alive", "logo": "baby-alive.png" },
+  { "name": "Mr. Potato Head", "logo": "mr-potato-head.png" },
+  { "name": "Furby", "logo": "furby.png" },
+  { "name": "Play-Doh", "logo": "play-doh.png" },
+  { "name": "GI Joe", "logo": "gi-joe.png" },
+  { "name": "Transformers", "logo": "transformers.png" },
+  { "name": "Disney", "logo": "disney.png" },
+  { "name": "Star Wars", "logo": "star-wars.png" },
+  { "name": "Marvel", "logo": "marvel.png" },
+  { "name": "Magic The Gathering", "logo": "magic-the-gathering.png" },
+  { "name": "Square Enix", "logo": "square-enix.png" },
+  { "name": "CVS", "logo": "cvs.png" },
+  { "name": "L.L.Bean", "logo": "ll-bean.png" },
+  { "name": "Lands End", "logo": "lands-end.png" }
+]
 }
