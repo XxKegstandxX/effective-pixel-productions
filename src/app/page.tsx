@@ -74,11 +74,11 @@ export default function Home() {
                   <div className="absolute -bottom-8 -left-8 lg:-left-16 bg-ep-charcoal border border-ep-graphite p-6 opacity-0 animate-fade-in-up stagger-4 z-10">
                     <div className="grid grid-cols-2 gap-8">
                       <div>
-                        <p className="font-display text-3xl text-ep-white mb-1">15+</p>
-                        <p className="text-xs uppercase tracking-wide text-ep-gray">Years Combined</p>
+                        <p className="font-display text-3xl text-ep-white mb-1">1000+</p>
+                        <p className="text-xs uppercase tracking-wide text-ep-gray">Products Shot</p>
                       </div>
                       <div>
-                        <p className="font-display text-3xl text-ep-accent mb-1">50+</p>
+                        <p className="font-display text-3xl text-ep-accent mb-1">15+</p>
                         <p className="text-xs uppercase tracking-wide text-ep-gray">Major Brands</p>
                       </div>
                     </div>
