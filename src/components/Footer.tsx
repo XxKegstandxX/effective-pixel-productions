@@ -36,7 +36,7 @@ export default function Footer() {
               href="mailto:effectivepixelproductions@gmail.com" 
               className="text-ep-white hover:text-ep-accent transition-colors text-lg font-display"
             >
-              mailto:effectivepixelproductions@gmail.com
+              effectivepixelproductions@gmail.com
             </a>
           </div>
         </div>
