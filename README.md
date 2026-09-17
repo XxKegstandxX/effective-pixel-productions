@@ -222,7 +222,8 @@ Paid slot booking backed by Supabase (data + realtime) and Stripe Checkout (paym
    ```bash
    stripe listen --forward-to localhost:3000/api/stripe/webhook
    ```
-4. `npm run dev` and open [http://localhost:3000/headshots](http://localhost:3000/headshots).
+4. Already have the base schema? Also run the files in [`supabase/migrations/`](supabase/migrations/) in date order.
+5. `npm run dev` and open [http://localhost:3000/headshots](http://localhost:3000/headshots).
 
 ### Adding the next event
 
@@ -244,4 +245,7 @@ select generate_slots(id) from events where event_date = '2026-11-14';
 | Payment succeeds | `POST /api/stripe/webhook` → `confirmBooking()` | booking → `confirmed`, slot → `booked` (also run from `/headshots/success` as a fallback if the webhook is slow) |
 | Customer backs out | `GET /api/checkout/cancel` | booking → `cancelled`, slot → `open` |
 | Customer just closes the tab | nothing | hold lapses; the grid treats expired holds as open (lazy expiry) and the next `hold_slot()` takes it over and expires the stale Stripe session |
+| Customer opens `/headshots/manage/<bookingId>` | server-rendered, service role | Shows slot/status. Reschedule + Cancel only while `status = confirmed` **and** now < event start − 24h (`event_starts_at()`) |
+| Reschedule | `POST /api/manage/<id>/reschedule` → `reschedule_booking()` | One transaction: claim new slot (open or lapsed hold) → move booking → release old slot. Race → `SLOT_UNAVAILABLE` → customer picks again |
+| Cancel & refund | `POST /api/manage/<id>/cancel` → `cancelBookingWithRefund()` | Reads the real Stripe fee from the charge's balance transaction, refunds `amount − fee`, then booking → `cancelled`, slot → `open`. Refund failure leaves everything untouched |
 | Paid after losing the slot (last-resort safety net; shouldn't happen now that hold = session lifetime) | `confirmBooking()` | booking → `cancelled`, automatic Stripe refund, customer sees a "slot was taken" page |

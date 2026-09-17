@@ -36,5 +36,7 @@ export interface BookingRow {
   stripe_session_id: string | null
   stripe_payment_intent_id: string | null
   status: BookingStatus
+  stripe_refund_id: string | null
+  refund_cents: number | null
   created_at: string
 }

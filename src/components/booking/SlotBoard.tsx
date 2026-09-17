@@ -9,10 +9,16 @@ import BookingModal from './BookingModal'
 interface Props {
   event: EventRow
   initialSlots: SlotRow[]
+  /** 'book' (default) opens the payment form; 'reschedule' hands the picked slot to onSelect. */
+  mode?: 'book' | 'reschedule'
+  /** In reschedule mode: the customer's existing slot, shown as "Yours" and not selectable. */
+  currentSlotId?: string
+  onSelect?: (slot: SlotRow) => void
 }
 
-export default function SlotBoard({ event, initialSlots }: Props) {
+export default function SlotBoard({ event, initialSlots, mode = 'book', currentSlotId, onSelect }: Props) {
   const [slots, setSlots] = useState<SlotRow[]>(initialSlots)
+  useEffect(() => setSlots(initialSlots), [initialSlots])
   const [now, setNow] = useState(() => new Date())
   const [selected, setSelected] = useState<SlotRow | null>(null)
   const [notice, setNotice] = useState<string | null>(null)
@@ -95,7 +101,8 @@ export default function SlotBoard({ event, initialSlots }: Props) {
   const onPick = (slot: SlotRow) => {
     if (effectiveStatus(slot, new Date()) !== 'open') return
     setNotice(null)
-    setSelected(slot)
+    if (mode === 'reschedule') onSelect?.(slot)
+    else setSelected(slot)
   }
 
   return (
@@ -112,6 +119,7 @@ export default function SlotBoard({ event, initialSlots }: Props) {
           <Legend swatch="border-ep-accent" label="Open" />
           <Legend swatch="border-amber-500/70 bg-amber-500/10" label="Held" />
           <Legend swatch="border-ep-graphite bg-ep-charcoal" label="Booked" />
+          {currentSlotId && <Legend swatch="border-ep-accent bg-ep-accent/20" label="Yours" />}
           <span className="flex items-center gap-2 text-ep-gray">
             <span className={`w-1.5 h-1.5 rounded-full ${live ? 'bg-ep-accent animate-pulse' : 'bg-ep-gray'}`} />
             {live ? 'Live' : 'Connecting'}
@@ -134,6 +142,7 @@ export default function SlotBoard({ event, initialSlots }: Props) {
                   key={slot.id}
                   slot={slot}
                   status={effectiveStatus(slot, now)}
+                  isCurrent={slot.id === currentSlotId}
                   timeZone={event.timezone}
                   onClick={() => onPick(slot)}
                 />
@@ -147,7 +156,7 @@ export default function SlotBoard({ event, initialSlots }: Props) {
         <p className="mt-10 text-ep-silver">All slots are taken. Thank you for the incredible response!</p>
       )}
 
-      {selected && (
+      {mode === 'book' && selected && (
         <BookingModal
           event={event}
           slot={selected}
@@ -175,16 +184,27 @@ function Legend({ swatch, label }: { swatch: string; label: string }) {
 function SlotButton({
   slot,
   status,
+  isCurrent,
   timeZone,
   onClick,
 }: {
   slot: SlotRow
   status: SlotStatus
+  isCurrent?: boolean
   timeZone: string
   onClick: () => void
 }) {
   const time = formatSlotTime(slot.start_time, timeZone)
   const base = 'relative h-14 px-4 flex items-center justify-between border text-sm transition-all duration-300'
+
+  if (isCurrent) {
+    return (
+      <div className={`${base} border-ep-accent bg-ep-accent/20 text-ep-white cursor-default`} aria-current="true">
+        <span>{time}</span>
+        <span className="text-[10px] uppercase tracking-widest text-ep-accent-light">Yours</span>
+      </div>
+    )
+  }
 
   if (status === 'booked') {
     return (

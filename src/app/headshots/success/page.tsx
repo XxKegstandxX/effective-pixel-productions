@@ -6,6 +6,7 @@ import { confirmBooking, getBookingBySessionId } from '@/lib/booking/transitions
 import { formatUsd } from '@/lib/booking/pricing'
 import { formatEventDate, formatSlotRange, formatTimeZoneAbbr } from '@/lib/booking/slots'
 import type { BookingRow, EventRow, SlotRow } from '@/lib/booking/types'
+import ManageLinkBox from '@/components/booking/ManageLinkBox'
 
 export const dynamic = 'force-dynamic'
 export const metadata: Metadata = { title: "You're all set | Effective Pixel Productions" }
@@ -71,8 +72,10 @@ export default async function SuccessPage({ searchParams }: { searchParams: { se
         <Row label="Receipt"><span className="text-ep-white">{booking.email}</span></Row>
       </div>
 
+      <ManageLinkBox path={`/headshots/manage/${booking.id}`} />
+
       <p className="text-sm text-ep-gray mt-8 max-w-lg">
-        Please arrive about 5 minutes early. Stripe will email your receipt; save this page or take a screenshot for your reference.
+        Please arrive about 5 minutes early. Stripe will email your receipt.
       </p>
       <Link href="/" className="btn-ghost mt-10">Back to home</Link>
     </Shell>
