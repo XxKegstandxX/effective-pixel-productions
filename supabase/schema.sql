@@ -180,8 +180,8 @@ where event_date = date '2026-10-10' and name = 'Charity Headshot Day';
 
 -- Sanity check — expect 32 rows, 09:00 → 16:45 local.
 select count(*) as slot_count,
-       min(start_time at time zone 'America/New_York') as first_slot,
-       max(start_time at time zone 'America/New_York') as last_slot
+       min(s.start_time at time zone 'America/New_York') as first_slot,
+       max(s.start_time at time zone 'America/New_York') as last_slot
 from public.slots s
 join public.events e on e.id = s.event_id
 where e.event_date = date '2026-10-10';
