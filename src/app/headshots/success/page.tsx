@@ -7,6 +7,7 @@ import { formatUsd } from '@/lib/booking/pricing'
 import { formatEventDate, formatSlotRange, formatTimeZoneAbbr } from '@/lib/booking/slots'
 import type { BookingRow, EventRow, SlotRow } from '@/lib/booking/types'
 import ManageLinkBox from '@/components/booking/ManageLinkBox'
+import AddToCalendar from '@/components/booking/AddToCalendar'
 
 export const dynamic = 'force-dynamic'
 export const metadata: Metadata = { title: "You're all set | Effective Pixel Productions" }
@@ -71,6 +72,8 @@ export default async function SuccessPage({ searchParams }: { searchParams: { se
         </Row>
         <Row label="Receipt"><span className="text-ep-white">{booking.email}</span></Row>
       </div>
+
+      <AddToCalendar booking={booking} slot={slot} event={event} className="mt-8" />
 
       <ManageLinkBox path={`/headshots/manage/${booking.id}`} />
 

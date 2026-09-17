@@ -5,6 +5,7 @@ import { getSlotsForEvent } from '@/lib/supabase/public'
 import { formatEventDate, formatSlotRange, formatTimeZoneAbbr } from '@/lib/booking/slots'
 import { formatUsd } from '@/lib/booking/pricing'
 import ManageBooking from '@/components/booking/ManageBooking'
+import AddToCalendar from '@/components/booking/AddToCalendar'
 
 export const dynamic = 'force-dynamic'
 export const metadata: Metadata = {
@@ -65,7 +66,11 @@ export default async function ManagePage({ params }: { params: { bookingId: stri
         </div>
       </div>
 
-      <div className="mt-12 opacity-0 animate-fade-in-up stagger-3">
+      {booking.status === 'confirmed' && (
+        <AddToCalendar booking={booking} slot={slot} event={event} className="mt-8 opacity-0 animate-fade-in-up stagger-3" />
+      )}
+
+      <div className="mt-12 opacity-0 animate-fade-in-up stagger-4">
         {canModify ? (
           <ManageBooking
             bookingId={booking.id}
