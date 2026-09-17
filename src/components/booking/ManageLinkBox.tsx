@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
 
 export default function ManageLinkBox({ path }: { path: string }) {
   const [href, setHref] = useState(path)
@@ -35,6 +36,13 @@ export default function ManageLinkBox({ path }: { path: string }) {
       <button type="button" onClick={copy} className="btn-outline !py-3 !px-6 text-xs">
         {copied ? 'Copied!' : 'Copy link'}
       </button>
+      <p className="text-xs text-ep-silver mt-5">
+        Lost this link later? You can look it up at{' '}
+        <Link href="/headshots/find" className="underline underline-offset-4 text-amber-300 hover:text-amber-200">
+          /headshots/find
+        </Link>{' '}
+        with your email and phone.
+      </p>
     </div>
   )
 }

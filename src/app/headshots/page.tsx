@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { getCurrentEvent, getSlotsForEvent } from '@/lib/supabase/public'
 import { formatEventDate, formatTimeOfDay } from '@/lib/booking/slots'
 import { formatUsd, grossUpCents } from '@/lib/booking/pricing'
@@ -65,6 +66,13 @@ export default async function BookPage({
           <Fact label="Price" value={formatUsd(event.price_cents)} />
           <Fact label="Slots" value={String(totalSlots)} />
         </div>
+
+        <p className="relative mt-10 text-sm text-ep-gray opacity-0 animate-fade-in stagger-5">
+          Already booked?{' '}
+          <Link href="/headshots/find" className="text-ep-silver underline underline-offset-4 hover:text-ep-accent transition-colors">
+            Find your booking
+          </Link>
+        </p>
       </section>
 
       <EventContext charityInfo={event.charity_info} imageUrl={event.image_url} />
