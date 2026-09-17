@@ -205,3 +205,43 @@ Common fixes:
 3. **Deployment fails:** Check the Vercel build logs for specific errors
 
 Good luck with the launch! 🚀
+
+---
+
+## 📅 Headshot Booking (`/headshots`)
+
+Paid slot booking backed by Supabase (data + realtime) and Stripe Checkout (payment).
+
+### Setup
+
+1. **Supabase** — create a project, open *SQL Editor*, paste and run [`supabase/schema.sql`](supabase/schema.sql). It creates `events`, `slots`, `bookings`, RLS policies, the `hold_slot()` / `generate_slots()` functions, enables realtime on `slots`, and seeds the 10/10/2026 event with its 32 slots. The final query should report `slot_count = 32`.
+2. **Env vars** — copy `.env.example` to `.env.local` and fill in the Supabase and Stripe keys (same names in Vercel).
+3. **Stripe webhook** — in the Stripe dashboard (*Developers → Webhooks*) add an endpoint for `https://<your-domain>/api/stripe/webhook` with events:
+   `checkout.session.completed`, `checkout.session.expired`, `checkout.session.async_payment_succeeded`, `checkout.session.async_payment_failed`.
+   Put the signing secret in `STRIPE_WEBHOOK_SECRET`. For local dev:
+   ```bash
+   stripe listen --forward-to localhost:3000/api/stripe/webhook
+   ```
+4. `npm run dev` and open [http://localhost:3000/headshots](http://localhost:3000/headshots).
+
+### Adding the next event
+
+```sql
+insert into events (name, event_date, start_time, end_time, slot_minutes, price_cents, timezone)
+values ('November Headshots', '2026-11-14', '09:00', '17:00', 15, 8500, 'America/New_York');
+
+select generate_slots(id) from events where event_date = '2026-11-14';
+```
+
+`/headshots` shows the next upcoming event automatically.
+
+### How a booking flows
+
+| Step | Where | What happens |
+|---|---|---|
+| Pick slot + submit form | `POST /api/checkout` | `hold_slot()` atomically marks the slot `held` for 30 min, a `pending` booking is created, Stripe Checkout session is created with a dynamic amount |
+| Pay | Stripe | Session expires after 30 min (Stripe minimum); the slot's `held_until` is synced to that exact expiry |
+| Payment succeeds | `POST /api/stripe/webhook` → `confirmBooking()` | booking → `confirmed`, slot → `booked` (also run from `/headshots/success` as a fallback if the webhook is slow) |
+| Customer backs out | `GET /api/checkout/cancel` | booking → `cancelled`, slot → `open` |
+| Customer just closes the tab | nothing | hold lapses; the grid treats expired holds as open (lazy expiry) and the next `hold_slot()` takes it over and expires the stale Stripe session |
+| Paid after losing the slot (last-resort safety net; shouldn't happen now that hold = session lifetime) | `confirmBooking()` | booking → `cancelled`, automatic Stripe refund, customer sees a "slot was taken" page |
