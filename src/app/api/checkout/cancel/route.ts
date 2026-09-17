@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { getBookingBySessionId, releaseBooking } from '@/lib/booking/transitions'
 import { getStripe } from '@/lib/stripe'
+import { revalidateBookingPages } from '@/lib/booking/revalidate'
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
@@ -24,6 +25,7 @@ export async function GET(req: Request) {
         /* already expired or paid — webhook will sort it out */
       }
       await releaseBooking(booking)
+      revalidateBookingPages(booking.id)
     }
   }
 

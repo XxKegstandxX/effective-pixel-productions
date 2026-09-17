@@ -8,6 +8,8 @@ function publicClient() {
   if (!url || !key) throw new Error('Missing NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_ANON_KEY (check .env.local and restart the dev server)')
   return createClient(url, key, {
     auth: { persistSession: false, autoRefreshToken: false },
+    // Never let Next's fetch cache serve a stale row, even from a page that isn't force-dynamic.
+    global: { fetch: (input, init) => fetch(input, { ...init, cache: 'no-store' }) },
   })
 }
 

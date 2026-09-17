@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { getBookingContext, rescheduleBooking } from '@/lib/booking/manage'
+import { revalidateBookingPages } from '@/lib/booking/revalidate'
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
@@ -23,5 +24,6 @@ export async function POST(req: Request, { params }: { params: { bookingId: stri
 
   const result = await rescheduleBooking(ctx.booking.id, slotId)
   if (!result.ok) return NextResponse.json({ error: result.message, code: result.code }, { status: STATUS[result.code] ?? 500 })
+  revalidateBookingPages(ctx.booking.id)
   return NextResponse.json({ ok: true, slot: result.slot })
 }

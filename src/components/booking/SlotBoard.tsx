@@ -63,13 +63,22 @@ export default function SlotBoard({ event, initialSlots, mode = 'book', currentS
         if (ok) refetch()
       })
 
+    // Tab comes back, window regains focus, or the page is restored from the
+    // back/forward cache: the grid may be seconds-to-minutes old, so refetch.
     const onVisible = () => {
       if (document.visibilityState === 'visible') refetch()
     }
+    const onPageShow = (e: PageTransitionEvent) => {
+      if (e.persisted) refetch()
+    }
     document.addEventListener('visibilitychange', onVisible)
+    window.addEventListener('focus', refetch)
+    window.addEventListener('pageshow', onPageShow)
 
     return () => {
       document.removeEventListener('visibilitychange', onVisible)
+      window.removeEventListener('focus', refetch)
+      window.removeEventListener('pageshow', onPageShow)
       sb.removeChannel(channel)
     }
   }, [event.id, refetch])

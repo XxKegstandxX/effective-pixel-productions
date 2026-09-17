@@ -4,6 +4,7 @@ import { getStripe } from '@/lib/stripe'
 import { HOLD_MINUTES, totalCents } from '@/lib/booking/pricing'
 import { formatEventDate, formatSlotRange } from '@/lib/booking/slots'
 import type { BookingRow, EventRow, SlotRow } from '@/lib/booking/types'
+import { revalidateBookingPages } from '@/lib/booking/revalidate'
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
@@ -120,6 +121,7 @@ export async function POST(req: Request) {
       cancel_url: `${origin}/api/checkout/cancel?session_id={CHECKOUT_SESSION_ID}`,
     })
 
+    revalidateBookingPages(booking.id)
     await Promise.all([
       sb.from('bookings').update({ stripe_session_id: session.id }).eq('id', booking.id),
       sb

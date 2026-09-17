@@ -4,6 +4,7 @@ import { getStripe } from '@/lib/stripe'
 import { getSupabaseAdmin } from '@/lib/supabase/admin'
 import { confirmBooking, getBookingBySessionId, releaseBooking } from '@/lib/booking/transitions'
 import type { BookingRow } from '@/lib/booking/types'
+import { revalidateBookingPages } from '@/lib/booking/revalidate'
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
@@ -37,6 +38,7 @@ export async function POST(req: Request) {
         }
         const paymentIntentId = typeof session.payment_intent === 'string' ? session.payment_intent : session.payment_intent?.id ?? null
         const result = await confirmBooking(booking, paymentIntentId)
+        revalidateBookingPages(booking.id)
         if (!result.ok) console.warn('[webhook] booking not confirmed:', result.reason, booking.id)
         break
       }
@@ -45,7 +47,10 @@ export async function POST(req: Request) {
       case 'checkout.session.async_payment_failed': {
         const session = event.data.object as Stripe.Checkout.Session
         const booking = await findBooking(session)
-        if (booking) await releaseBooking(booking)
+        if (booking) {
+          await releaseBooking(booking)
+          revalidateBookingPages(booking.id)
+        }
         break
       }
 
