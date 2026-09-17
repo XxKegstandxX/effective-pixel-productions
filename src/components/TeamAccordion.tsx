@@ -102,7 +102,7 @@ export default function TeamAccordion({ categories }: TeamAccordionProps) {
                     <h4 className="font-display text-xl md:text-2xl text-ep-white mb-3">
                       {vendor.name}
                     </h4>
-                    <p className="text-ep-silver leading-relaxed">
+                    <p className="text-ep-silver leading-relaxed whitespace-pre-line">
                       {vendor.bio}
                     </p>
                   </div>
