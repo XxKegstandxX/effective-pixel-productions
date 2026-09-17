@@ -20,8 +20,16 @@ create table if not exists public.events (
   -- IANA zone the event runs in; slot timestamps are generated from
   -- event_date + start_time interpreted in this zone.
   timezone      text not null default 'America/New_York',
+  -- Optional context shown on /headshots. Both nullable so plain
+  -- (non-charity) events can leave them empty.
+  charity_info  text,
+  image_url     text,
   created_at    timestamptz not null default now()
 );
+
+-- Migration for databases created before these columns existed.
+alter table public.events add column if not exists charity_info text;
+alter table public.events add column if not exists image_url    text;
 
 -- -----------------------------------------------------------------------------
 -- slots: one row per bookable 15-minute window.
@@ -177,6 +185,15 @@ where not exists (
 select public.generate_slots(id) as slots_created
 from public.events
 where event_date = date '2026-10-10' and name = 'Charity Headshot Day';
+
+-- Charity blurb for the 10/10 event (image_url intentionally left null for now).
+update public.events
+   set charity_info = $charity$Diego is running the 2026 TCS New York City Marathon with Team for Kids — one of New York Road Runners' oldest and largest charity partners — which means every entry comes with a real fundraising commitment to hit, not just a race to finish.
+
+Every dollar raised goes toward NYRR's free youth and community programs, helping remove barriers to exercise and build healthier habits for kids across New York.
+
+100% of proceeds from today's headshots go straight to Diego's fundraising goal. Bookings close October 10, 2026 — the day of the shoot.$charity$
+ where event_date = date '2026-10-10' and name = 'Charity Headshot Day';
 
 -- Sanity check — expect 32 rows, 09:00 → 16:45 local.
 select count(*) as slot_count,

@@ -3,6 +3,7 @@ import { getCurrentEvent, getSlotsForEvent } from '@/lib/supabase/public'
 import { formatEventDate, formatTimeOfDay } from '@/lib/booking/slots'
 import { formatUsd, grossUpCents } from '@/lib/booking/pricing'
 import SlotBoard from '@/components/booking/SlotBoard'
+import EventContext from '@/components/booking/EventContext'
 
 export const dynamic = 'force-dynamic'
 
@@ -65,6 +66,8 @@ export default async function BookPage({
           <Fact label="Slots" value={String(totalSlots)} />
         </div>
       </section>
+
+      <EventContext charityInfo={event.charity_info} imageUrl={event.image_url} />
 
       <div className="sep-line-accent" />
 

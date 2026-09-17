@@ -10,6 +10,8 @@ export interface EventRow {
   slot_minutes: number
   price_cents: number
   timezone: string        // IANA, e.g. 'America/New_York'
+  charity_info: string | null   // optional blurb shown on /headshots; supports blank-line paragraphs
+  image_url: string | null      // optional image URL shown alongside the blurb
   created_at: string
 }
 
