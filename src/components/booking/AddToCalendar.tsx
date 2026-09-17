@@ -28,6 +28,7 @@ export default function AddToCalendar({ booking, slot, event, className = '' }: 
         </a>
       </div>
       <p className="text-xs text-ep-gray mt-3">The .ics file works with Apple Calendar, Outlook, and most other apps.</p>
+      <p className="text-xs text-ep-gray mt-2">If you already added the previous time to your calendar, you may want to remove that old entry.</p>
     </div>
   )
 }

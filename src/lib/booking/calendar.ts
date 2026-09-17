@@ -1,7 +1,7 @@
 import type { BookingRow, EventRow, SlotRow } from './types'
 
-// TODO: replace with the real studio address (shown in the calendar entry's Location field).
-export const STUDIO_ADDRESS = 'Effective Pixel Productions Studio, 123 Studio Way, Providence, RI 02903'
+/** Shown in the calendar entry's Location field. */
+export const STUDIO_ADDRESS = '85 Industrial Circle, Lincoln, RI 02865'
 
 export interface CalendarEvent {
   uid: string
@@ -15,12 +15,12 @@ export interface CalendarEvent {
 export function calendarEventFor(booking: BookingRow, slot: SlotRow, event: EventRow, siteOrigin: string): CalendarEvent {
   return {
     uid: `booking-${booking.id}@effectivepixelproductions`,
-    title: 'Headshot Session – Effective Pixel Productions',
+    title: event.name,
     start: new Date(slot.start_time),
     end: new Date(slot.end_time),
     location: STUDIO_ADDRESS,
     description: [
-      `Booked via ${event.name}.`,
+      'Your headshot session with Effective Pixel Productions.',
       'Please arrive about 5 minutes early.',
       `Reschedule or cancel: ${siteOrigin}/headshots/manage/${booking.id}`,
     ].join('\n'),
